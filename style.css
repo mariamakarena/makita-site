@@ -1,0 +1,424 @@
+/* RESET BASICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+}
+/* BODY */
+body {
+  background-color: #000000;
+  font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  letter-spacing: 0.02em;
+}
+
+/* =========================
+       HOME
+    ========================= */
+
+.home {
+  height: 85vh; /* desktop */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  overflow: hidden;
+}
+
+.home-logo {
+  width: 90vw;
+  max-width: 1200px;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.98;
+}
+
+/* =========================
+       BIO
+    ========================= */
+
+.bio {
+  min-height: auto;
+  padding: 40px 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bio-track {
+  white-space: nowrap;
+  animation: scrollText 50s linear infinite;
+}
+
+.bio-text {
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  padding-left: 100vw;
+  max-width: none;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* =========================
+       PROJECTS (DESKTOP)
+    ========================= */
+
+.projects {
+  display: flex;
+  min-height: 100vh;
+  background: black;
+  color: white;
+}
+
+/* LEFT */
+.projects-left {
+  width: 50%;
+  padding: 12vh 8vw;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* RIGHT */
+.projects-right {
+  width: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.projects-right img {
+  width: 60%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: cover;
+  filter: brightness(0.6);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* MAKITA: ~10% más grande y más arriba */
+.projects-right img.preview-makita {
+  transform: scale(1.3) translateY(-5%);
+}
+
+/* (Opcional) hooks para las otras */
+.projects-right img.preview-scores {
+  transform: scale(1.3) translateY(-6%);
+}
+
+.projects-right img.preview-whisky {
+  transform: scale(1.4) translateY(-10%);
+}
+
+.projects-right img.preview-2tired {
+  transform: scale(1.1) translateY(0%);
+}
+
+.projects-right img.preview-soundart {
+  transform: scale(1.1) translateY(0%);
+}
+
+/* PROJECT BASE */
+.project {
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.project h2 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.project:hover h2 {
+  opacity: 0.4;
+}
+
+/* ACCORDION */
+.project-accordion {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  font-size: 0.9rem;
+  opacity: 0;
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+/* cuando está cerrado, opaco */
+.project-accordion[style*="max-height: 0px"] {
+  opacity: 0;
+}
+
+/* cuando tiene algún max-height (abierto), visible */
+.project-accordion[style*="max-height: "] {
+  opacity: 0.8;
+}
+
+/* ====== WORK ITEMS (dentro del acordeón) ====== */
+
+.work-item {
+  padding: 6px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+}
+
+.work-item:first-child {
+  border-top: none;
+}
+
+.work-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.work-meta {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-top: 2px;
+}
+
+/* ligero feedback al hover */
+.work-item:hover .work-title {
+  opacity: 0.7;
+}
+
+/* CHAOTIC OFFSETS (DESKTOP ONLY) */
+
+.project.offset-1 {
+  margin-left: 0px;
+}
+
+.project.offset-2 {
+  margin-left: -25px;
+  margin-top: -35px;
+}
+.project.offset-2 .project-hover-info {
+  display: block;
+  margin-left: 340px;
+  margin-top: -13px;
+}
+
+.project.offset-3 {
+  margin-left: 55px;
+  margin-top: -50px;
+}
+
+.project.offset-4 {
+  margin-left: 16px;
+  margin-top: -43px;
+}
+
+.project.offset-5 {
+  margin-left: 40px;
+  margin-top: -45px;
+}
+
+/* último: hover-info debajo del título */
+.project.offset-5 .project-hover-info {
+  display: block;
+  margin-left: 340px;
+  margin-top: -13px;
+}
+
+/* HOVER MINI INFO */
+
+.project-hover-info {
+  font-size: 0.9rem;
+  font-weight: 300;
+  margin-left: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  letter-spacing: 0.05em;
+}
+
+.project:hover .project-hover-info {
+  opacity: 0.8;
+}
+
+/* =========================
+     WORK DETAIL PANEL (DERECHA)
+     ========================= */
+
+#work-detail-panel {
+  position: absolute;
+  inset: 0; /* ocupa todo el área de .projects-right */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* no bloquea el hover sobre proyectos */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* contenido del detalle */
+.work-detail {
+  width: 80%;
+  max-width: 700px;
+  pointer-events: auto; /* si luego quieres links, etc. */
+}
+
+.work-detail-title {
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.work-detail-meta {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-bottom: 12px;
+}
+
+.work-detail-text {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.work-detail-media {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.work-detail-media img,
+.work-detail-media video {
+  flex: 1 1 48%;
+  max-width: 48%;
+  object-fit: cover;
+  filter: brightness(0.9);
+}
+
+/* enlaces dentro del detalle (columna derecha) */
+.work-detail a {
+  color: #ff3b3b; /* rojo */
+  text-decoration: none;
+  font: inherit; /* misma tipografía y peso que el texto */
+}
+
+.work-detail a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* MOBILE: detalle más ancho y media apilada */
+@media (max-width: 768px) {
+  .work-detail {
+    width: 90%;
+  }
+
+  .work-detail-media img,
+  .work-detail-media video {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+
+/* =========================
+         MOBILE
+      ========================= */
+
+@media (max-width: 768px) {
+  /* HERO */
+  .home {
+    height: 100vh;
+  }
+
+  .home-logo {
+    width: 95vw;
+    max-width: none;
+  }
+
+  /* BIO */
+  .bio {
+    padding: 20px 0;
+  }
+
+  .bio-text {
+    font-size: 10px;
+  }
+
+  /* PROJECTS STACK */
+  .projects {
+    display: block;
+    min-height: auto;
+  }
+
+  .projects-left {
+    width: 100%;
+    padding: 8vh 6vw;
+  }
+
+  .projects-right {
+    width: 100%;
+  }
+
+  .projects-right img {
+    width: 100%;
+    height: 50vh;
+  }
+
+  /* REMOVE CHAOS */
+  .project {
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .project h2 {
+    font-size: 1.6rem;
+  }
+}
+/* MAKITA */
+.projects-right img.preview-makita {
+  transform: scale(1.3) translateY(-5%);
+}
+
+/* SCORES */
+.projects-right img.preview-scores {
+  transform: scale(1.3) translateY(-6%);
+}
+
+/* WHISKY */
+.projects-right img.preview-whisky {
+  transform: scale(1.4) translateY(-10%);
+}
+
+/* 2TIRED2FUCK */
+.projects-right img.preview-2tired {
+  transform: scale(1.1) translateY(0%);
+}
+
+/* SOUNDART */
+.projects-right img.preview-soundart {
+  transform: scale(1.1) translateY(0%);
+}
