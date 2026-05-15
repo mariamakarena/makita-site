@@ -318,7 +318,18 @@ body {
   object-fit: cover;
   filter: brightness(0.9);
 }
+/* Variante: imágenes/vídeos horizontales a ancho completo */
+.work-detail-media.work-detail-media--full {
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
 
+.work-detail-media.work-detail-media--full img,
+.work-detail-media.work-detail-media--full video {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
+}
 /* enlaces dentro del detalle (columna derecha) */
 .work-detail a {
   color: #ff3b3b; /* rojo */
